@@ -74,7 +74,7 @@ namespace Lab_8
       return string.Join(", ",
     _output
         .Where(t => t.Item2 != 0)        // фильтруем: только те, у кого частота > 0
-        .OrderBy(t=> t.Item1)
+        .OrderBy(t => t.Item1)
         .Reverse()
         .OrderBy(t => t.Item2)           // сортируем по возрастанию
         .Reverse()                       // переворачиваем (в итоге — убывание)
