@@ -24,6 +24,10 @@ namespace Lab_8
       g3.Review();
       Console.WriteLine(g3.ToString());
 
+      Green g4 = new Green_4("Иванов, Петров, Смирнов, Соколов, Кузнецов, Попов, Лебедев, Волков, Козлов, Новиков, Иванова, Петрова, Смирнова, ");
+      g4.Review();
+      Console.WriteLine(g4.ToString());
+
     }
   }
 }

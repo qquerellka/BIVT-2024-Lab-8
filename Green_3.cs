@@ -54,7 +54,6 @@ namespace Lab_8
     public override string ToString() {
       if (_output == null || _output.Length == 0) return string.Empty;
           return string.Join("\n", _output);
-
     }
   }
 }
