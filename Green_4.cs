@@ -10,11 +10,11 @@ namespace Lab_8
   public class Green_4 : Green
   {
     // Поля
-    private string[] _output;
+    private string[]? _output;
     private static char[] _punctuation;
 
     // Свойства
-    public string[] Output => _output ?? Array.Empty<string>();
+    public string[]? Output => _output;
 
     // Конструкторы
     public Green_4(string input) : base(input)
@@ -31,7 +31,7 @@ namespace Lab_8
     {
       if (Input == null) return;
       string text = Input;
-      string[] surnames = text.Split(new char[] { ' ', '\t', '\n', '\r' }, StringSplitOptions.RemoveEmptyEntries);
+      string[] surnames = text.Split(new char[] {' ', '.', '!', '?', ',', ':', '\"', ';', '–', '(', ')', '[', ']', '{', '}', '/' }, StringSplitOptions.RemoveEmptyEntries);
       for (int i = 0; i < surnames.Length; i++) {
         surnames[i] = new string(surnames[i].Where(c => !_punctuation.Contains(c)).ToArray());
       }
@@ -83,7 +83,7 @@ namespace Lab_8
     }
     public override string ToString() {
       if (_output == null || _output.Length == 0) return string.Empty;
-          return string.Join("\n", _output);
+          return string.Join(Environment.NewLine, _output);
     }
     //
   }

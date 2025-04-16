@@ -6,11 +6,11 @@ namespace Lab_8
   public class Green_1 : Green
   {
     // Поля
-    private (char, double)[] _output;
+    private (char, double)[]? _output;
     private static readonly char[] _russianLetters;
 
     // Свойство
-    public (char, double)[] Output => _output ?? Array.Empty<(char, double)>();
+    public (char, double)[]? Output => _output;
 
     // Статический конструктор
     static Green_1()
@@ -70,12 +70,14 @@ namespace Lab_8
       if (_output == null) return string.Empty;
 
       return string.Join(
-          "\n",
+          Environment.NewLine,
           _output
               .OrderBy(t => t.Item1)
+              .Where(item => item.Item2 != 0)
               .Select(t => $"{t.Item1} - {t.Item2.ToString("F4", CultureInfo.InvariantCulture)}")
       );
     }
+
   }
 
 }

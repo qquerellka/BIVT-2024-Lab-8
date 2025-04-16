@@ -9,7 +9,7 @@ namespace Lab_8
   public class Green_3 : Green
   {
     // Поля 
-    private string[] _output;
+    private string[]? _output;
     private string _sequence;
     private static char[] _punctuation;
 
@@ -24,7 +24,7 @@ namespace Lab_8
     }
 
     // Свойства
-    public string[] Output => _output ?? Array.Empty<string>();
+    public string[]? Output => _output;
 
     // Методы
     public override void Review()
@@ -32,7 +32,7 @@ namespace Lab_8
       if (Input == null) return;
 
       string text = Input.ToLowerInvariant();
-      string[] words = text.Split(new char[] { ' ', '\t', '\n', '\r' }, StringSplitOptions.RemoveEmptyEntries);
+      string[] words = text.Split(new char[] {' ', '.', '!', '?', ',', ':', '\"', ';', '–', '(', ')', '[', ']', '{', '}', '/' }, StringSplitOptions.RemoveEmptyEntries);
       string[] testoutput = new string[words.Length];
       int count = 0;
       foreach (string s in words) {
@@ -53,7 +53,7 @@ namespace Lab_8
 
     public override string ToString() {
       if (_output == null || _output.Length == 0) return string.Empty;
-          return string.Join("\n", _output);
+          return string.Join(Environment.NewLine, _output);
     }
   }
 }
