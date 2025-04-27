@@ -66,17 +66,18 @@ namespace Lab_8
     }
 
     public override string ToString()
-    {
-      if (_output == null) return string.Empty;
+{
+    if (_output == null || _output.Length == 0) return string.Empty;
 
-      return string.Join(
-          Environment.NewLine,
-          _output
-              .OrderBy(t => t.Item1)
-              .Where(item => item.Item2 != 0)
-              .Select(t => $"{t.Item1} - {t.Item2.ToString("F4", CultureInfo.InvariantCulture)}")
-      );
-    }
+    return string.Join(
+        Environment.NewLine,
+        _output
+            .OrderBy(t => t.Item1)
+            .Where(item => item.Item2 != 0)
+            .Select(t => $"{t.Item1} - {t.Item2.ToString("F4", new CultureInfo("ru-RU"))}")
+    );
+}
+
 
   }
 

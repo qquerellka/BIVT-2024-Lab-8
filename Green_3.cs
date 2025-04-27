@@ -14,12 +14,14 @@ namespace Lab_8
     private static char[] _punctuation;
 
     // Конструктор
-    public Green_3(string input, string sequence) :base(input) {
+    public Green_3(string input, string sequence) : base(input)
+    {
       _output = null;
       _sequence = sequence is not null ? sequence.ToLowerInvariant() : string.Empty;
     }
 
-    static Green_3() {
+    static Green_3()
+    {
       _punctuation = ['.', '!', '?', ',', ':', '\"', ';', '–', '(', ')', '[', ']', '{', '}', '/'];
     }
 
@@ -32,15 +34,21 @@ namespace Lab_8
       if (Input == null) return;
 
       string text = Input.ToLowerInvariant();
-      string[] words = text.Split(new char[] {' ', '.', '!', '?', ',', ':', '\"', ';', '–', '(', ')', '[', ']', '{', '}', '/' }, StringSplitOptions.RemoveEmptyEntries);
+      string[] words = text.Split(new char[] { ' ', '.', '!', '?', ',', ':', '\"', ';', '–', '(', ')', '[', ']', '{', '}', '/' }, StringSplitOptions.RemoveEmptyEntries);
       string[] testoutput = new string[words.Length];
       int count = 0;
-      foreach (string s in words) {
-        if (s.Contains(_sequence)) {
+      foreach (string s in words)
+      {
+        if (s.Contains(_sequence))
+        {
           string clean = new string(s.Where(c => !_punctuation.Contains(c)).ToArray());
 
-          testoutput[count] = clean;
-          count++;
+          // Проверка, нет ли уже такого слова
+          if (!testoutput.Contains(clean))
+          {
+            testoutput[count] = clean;
+            count++;
+          }
         }
       }
 
@@ -51,9 +59,10 @@ namespace Lab_8
       }
     }
 
-    public override string ToString() {
+    public override string ToString()
+    {
       if (_output == null || _output.Length == 0) return string.Empty;
-          return string.Join(Environment.NewLine, _output);
+      return string.Join(Environment.NewLine, _output);
     }
   }
 }

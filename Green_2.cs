@@ -47,7 +47,7 @@ namespace Lab_8
       if (Input == null) return;
 
       string text = Input.ToLowerInvariant();
-      string[] words = text.Split(new char[] {' ', '.', '!', '?', ',', ':', '\"', ';', '–', '(', ')', '[', ']', '{', '}', '/' }, StringSplitOptions.RemoveEmptyEntries);
+      string[] words = text.Split(new char[] { ' ', '.', '!', '?', ',', ':', '\"', ';', '–', '(', ')', '[', ']', '{', '}', '/' }, StringSplitOptions.RemoveEmptyEntries);
 
       (char, int)[] letterCount = new (char, int)[_russianLetters.Length];
       for (int i = 0; i < _russianLetters.Length; i++)
@@ -72,7 +72,11 @@ namespace Lab_8
       }
       Console.WriteLine();
 
-      var result = letterCount.Where(item => item.Item2 != 0).OrderByDescending(item => item.Item2).ToArray();
+      var result = letterCount
+          .Where(item => item.Item2 != 0)
+          .OrderByDescending(item => item.Item2)
+          .ThenBy(item => item.Item1)
+          .ToArray();
       _output = new char[result.Length];
       for (int i = 0; i < result.Length; i++)
       {
@@ -82,7 +86,7 @@ namespace Lab_8
 
     public override string ToString()
     {
-      if (_output == null) return string.Empty;
+      if (_output == null || _output.Length == 0) return string.Empty;
 
       return string.Join(
           ", ", _output
