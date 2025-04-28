@@ -45,16 +45,21 @@ namespace Lab_8
 
       foreach (char c in text)
       {
-        for (int i = 0; i < _russianLetters.Length; i++)
+        if (char.IsLetter(c)) // если это вообще буква (любая)
         {
-          if (c == _russianLetters[i])
+          totalLetters++;    // учитываем ее в общем количестве
+
+          for (int i = 0; i < _russianLetters.Length; i++)
           {
-            letterCounts[i]++;
-            totalLetters++;
-            break;
+            if (c == _russianLetters[i])
+            {
+              letterCounts[i]++; // увеличиваем счетчик для русской буквы
+              break;
+            }
           }
         }
       }
+
 
       _output = new (char, double)[_russianLetters.Length];
 
@@ -66,17 +71,17 @@ namespace Lab_8
     }
 
     public override string ToString()
-{
-    if (_output == null || _output.Length == 0) return string.Empty;
+    {
+      if (_output == null || _output.Length == 0) return string.Empty;
 
-    return string.Join(
-        Environment.NewLine,
-        _output
-            .OrderBy(t => t.Item1)
-            .Where(item => item.Item2 != 0)
-            .Select(t => $"{t.Item1} - {t.Item2.ToString("F4", new CultureInfo("ru-RU"))}")
-    );
-}
+      return string.Join(
+          Environment.NewLine,
+          _output
+              .OrderBy(t => t.Item1)
+              .Where(item => item.Item2 != 0)
+              .Select(t => $"{t.Item1} - {t.Item2.ToString("F4", new CultureInfo("ru-RU"))}")
+      );
+    }
 
 
   }
