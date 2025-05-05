@@ -17,7 +17,8 @@ namespace Lab_8
 
 
     // Свойства
-    public char[]? Output => _output;
+    // public char[]? Output => _output;
+    public char[]? Output => _output?.ToArray();
 
     // Статический конструктор
     static Green_2()

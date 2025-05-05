@@ -10,7 +10,9 @@ namespace Lab_8
     private static readonly char[] _russianLetters;
 
     // Свойство
-    public (char, double)[]? Output => _output;
+    // public (char, double)[]? Output => _output;
+    public (char, double)[]? Output => _output?.ToArray();
+
 
     // Статический конструктор
     static Green_1()
@@ -65,7 +67,9 @@ namespace Lab_8
 
       for (int i = 0; i < _russianLetters.Length; i++)
       {
-        double freq = totalLetters > 0 ? Math.Round((double)letterCounts[i] / totalLetters, 4) : 0;
+        // double freq = totalLetters > 0 ? Math.Round((double)letterCounts[i] / totalLetters, 4) : 0;
+        double freq = totalLetters > 0 ? (double)letterCounts[i] / totalLetters : 0;
+
         _output[i] = (_russianLetters[i], freq);
       }
     }

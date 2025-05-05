@@ -14,7 +14,9 @@ namespace Lab_8
     private static char[] _punctuation;
 
     // Свойства
-    public string[]? Output => _output;
+    // public string[]? Output => _output;
+    public char[]? Output => _output?.ToArray();
+
 
     // Конструкторы
     public Green_4(string input) : base(input)

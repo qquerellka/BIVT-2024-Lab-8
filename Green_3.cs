@@ -26,7 +26,9 @@ namespace Lab_8
     }
 
     // Свойства
-    public string[]? Output => _output;
+    // public string[]? Output => _output;
+    public char[]? Output => _output?.ToArray();
+
 
     // Методы
     public override void Review()
